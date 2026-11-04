@@ -701,6 +701,27 @@ describe("gateway/node-command-policy", () => {
     expect(iosPairing.has("mobile.ui.act")).toBe(false);
   });
 
+  it("allows Android Marketplace worker commands only on Android pairing surfaces", () => {
+    const commands = ["photos.stage", "photos.cleanup", "clipboard.read"];
+    const androidPairing = resolveNodePairingCommandAllowlist({} as OpenClawConfig, {
+      platform: "android",
+      deviceFamily: "Android",
+      commands,
+    });
+    for (const command of commands) {
+      expect(androidPairing.has(command)).toBe(true);
+    }
+
+    const iosPairing = resolveNodePairingCommandAllowlist({} as OpenClawConfig, {
+      platform: "ios",
+      deviceFamily: "iPhone",
+      commands,
+    });
+    for (const command of commands) {
+      expect(iosPairing.has(command)).toBe(false);
+    }
+  });
+
   it("requires explicit gateway opt-in for iOS health summaries", () => {
     const node = {
       platform: "iOS 18.4.0",

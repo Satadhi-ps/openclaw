@@ -337,6 +337,8 @@ internal fun newInvokeDispatcher(
     systemHandler = SystemHandler(InvokeDispatcherFakeSystemNotificationPoster()),
     talkHandler = talkHandler,
     photosHandler = PhotosHandler(appContext, InvokeDispatcherFakePhotosDataSource()),
+    photoStagingHandler = PhotoStagingHandler(appContext, InvokeDispatcherFakePhotoStagingStore()),
+    clipboardHandler = ClipboardHandler(appContext) { "https://www.facebook.com/marketplace/item/123" },
     contactsHandler = ContactsHandler(appContext, InvokeDispatcherFakeContactsDataSource()),
     calendarHandler = CalendarHandler(appContext, InvokeDispatcherFakeCalendarDataSource()),
     motionHandler = MotionHandler(appContext, InvokeDispatcherFakeMotionDataSource()),
@@ -370,6 +372,12 @@ private fun newCameraHandler(appContext: Context): CameraHandler =
 
 private class InvokeDispatcherFakeSystemNotificationPoster : SystemNotificationPoster {
   override fun post(request: SystemNotifyRequest) = Unit
+}
+
+private class InvokeDispatcherFakePhotoStagingStore : PhotoStagingStore {
+  override suspend fun stage(request: PhotoStageRequest): PhotoStageResult = PhotoStageResult(request.albumName, request.imageUrls.size, "Pictures/HT/${request.albumName}/")
+
+  override fun cleanup(albumName: String): Int = 0
 }
 
 private class InvokeDispatcherFakeTalkHandler : TalkHandler {

@@ -69,6 +69,7 @@ import ai.openclaw.app.node.CalendarHandler
 import ai.openclaw.app.node.CallLogHandler
 import ai.openclaw.app.node.CameraCaptureManager
 import ai.openclaw.app.node.CameraHandler
+import ai.openclaw.app.node.ClipboardHandler
 import ai.openclaw.app.node.ConnectionManager
 import ai.openclaw.app.node.ContactsHandler
 import ai.openclaw.app.node.DebugHandler
@@ -82,6 +83,7 @@ import ai.openclaw.app.node.MotionHandler
 import ai.openclaw.app.node.NodeHostStatsReporter
 import ai.openclaw.app.node.NodePresenceAliveBeacon
 import ai.openclaw.app.node.NotificationsHandler
+import ai.openclaw.app.node.PhotoStagingHandler
 import ai.openclaw.app.node.PhotosHandler
 import ai.openclaw.app.node.SmsHandler
 import ai.openclaw.app.node.SmsManager
@@ -1030,6 +1032,8 @@ class NodeRuntime internal constructor(
       notificationsHandler = NotificationsHandler(appContext = appContext),
       systemHandler = SystemHandler(appContext = appContext),
       photosHandler = PhotosHandler(appContext = appContext),
+      photoStagingHandler = PhotoStagingHandler(appContext = appContext),
+      clipboardHandler = ClipboardHandler(appContext = appContext),
       contactsHandler = ContactsHandler(appContext = appContext),
       calendarHandler = CalendarHandler(appContext = appContext),
       callLogHandler = CallLogHandler(appContext = appContext),

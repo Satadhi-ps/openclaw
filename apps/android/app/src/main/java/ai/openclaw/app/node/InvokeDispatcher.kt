@@ -5,6 +5,7 @@ import ai.openclaw.app.protocol.OpenClawCalendarCommand
 import ai.openclaw.app.protocol.OpenClawCallLogCommand
 import ai.openclaw.app.protocol.OpenClawCameraCommand
 import ai.openclaw.app.protocol.OpenClawCapability
+import ai.openclaw.app.protocol.OpenClawClipboardCommand
 import ai.openclaw.app.protocol.OpenClawContactsCommand
 import ai.openclaw.app.protocol.OpenClawDeviceCommand
 import ai.openclaw.app.protocol.OpenClawLocationCommand
@@ -25,6 +26,8 @@ class InvokeDispatcher(
   systemHandler: SystemHandler,
   talkHandler: TalkHandler,
   photosHandler: PhotosHandler,
+  photoStagingHandler: PhotoStagingHandler,
+  clipboardHandler: ClipboardHandler,
   contactsHandler: ContactsHandler,
   calendarHandler: CalendarHandler,
   motionHandler: MotionHandler,
@@ -108,6 +111,9 @@ class InvokeDispatcher(
       Command(OpenClawNotificationsCommand.List.rawValue, notificationsHandler::handleNotificationsList),
       Command(OpenClawNotificationsCommand.Actions.rawValue, notificationsHandler::handleNotificationsActions),
       Command(OpenClawPhotosCommand.Latest.rawValue, photosHandler::handlePhotosLatest, photosGate),
+      Command(OpenClawPhotosCommand.Stage.rawValue, photoStagingHandler::handleStage, photosGate),
+      Command(OpenClawPhotosCommand.Cleanup.rawValue, photoStagingHandler::handleCleanup, photosGate),
+      Command(OpenClawClipboardCommand.Read.rawValue, clipboardHandler::handleRead, mobileUiGate),
       Command(OpenClawContactsCommand.Search.rawValue, contactsHandler::handleContactsSearch),
       Command(OpenClawContactsCommand.Add.rawValue, contactsHandler::handleContactsAdd),
       Command(OpenClawCalendarCommand.Events.rawValue, calendarHandler::handleCalendarEvents),

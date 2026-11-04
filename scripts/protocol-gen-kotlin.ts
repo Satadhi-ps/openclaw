@@ -121,7 +121,12 @@ const androidEnums: EnumSpec[] = [
     ["Actions", "actions"],
   ]),
   enumSpec("OpenClawSystemCommand", "system.", [["Notify", "notify"]]),
-  enumSpec("OpenClawPhotosCommand", "photos.", [["Latest", "latest"]]),
+  enumSpec("OpenClawPhotosCommand", "photos.", [
+    ["Latest", "latest"],
+    ["Stage", "stage"],
+    ["Cleanup", "cleanup"],
+  ]),
+  enumSpec("OpenClawClipboardCommand", "clipboard.", [["Read", "read"]]),
   enumSpec("OpenClawContactsCommand", "contacts.", [
     ["Search", "search"],
     ["Add", "add"],

@@ -48,6 +48,7 @@ const COMPUTER_COMMANDS = ["computer.act"];
 // Android advertises these only while Accessibility Control is enabled. The
 // action tool adds its own model-visible confirmation contract for mutations.
 const MOBILE_UI_COMMANDS = ["mobile.ui.observe", "mobile.ui.act"];
+const ANDROID_MARKETPLACE_WORKER_COMMANDS = ["photos.stage", "photos.cleanup", "clipboard.read"];
 
 const ANDROID_DEVICE_COMMANDS = [
   ...MOBILE_NODE_COMMANDS.device,
@@ -123,6 +124,7 @@ export const PLATFORM_DEFAULTS: Record<PlatformId, string[]> = {
     "callLog.search",
     ...PERSONAL_DATA_COMMANDS,
     ...MOBILE_UI_COMMANDS,
+    ...ANDROID_MARKETPLACE_WORKER_COMMANDS,
   ],
   macos: [
     ...CAMERA_COMMANDS,

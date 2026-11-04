@@ -25,6 +25,7 @@ class OpenClawProtocolConstantsTest {
         OpenClawNotificationsCommand.NamespacePrefix to OpenClawNotificationsCommand.entries.map { it.rawValue },
         OpenClawSystemCommand.NamespacePrefix to OpenClawSystemCommand.entries.map { it.rawValue },
         OpenClawPhotosCommand.NamespacePrefix to OpenClawPhotosCommand.entries.map { it.rawValue },
+        OpenClawClipboardCommand.NamespacePrefix to OpenClawClipboardCommand.entries.map { it.rawValue },
         OpenClawContactsCommand.NamespacePrefix to OpenClawContactsCommand.entries.map { it.rawValue },
         OpenClawCalendarCommand.NamespacePrefix to OpenClawCalendarCommand.entries.map { it.rawValue },
         OpenClawMotionCommand.NamespacePrefix to OpenClawMotionCommand.entries.map { it.rawValue },
