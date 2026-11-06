@@ -701,7 +701,7 @@ describe("gateway/node-command-policy", () => {
     expect(iosPairing.has("mobile.ui.act")).toBe(false);
   });
 
-  it("allows Android Marketplace worker commands only on Android pairing surfaces", () => {
+  it("allows Android photo and clipboard commands only on Android pairing surfaces", () => {
     const commands = ["photos.stage", "photos.cleanup", "clipboard.read"];
     const androidPairing = resolveNodePairingCommandAllowlist({} as OpenClawConfig, {
       platform: "android",

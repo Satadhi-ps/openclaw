@@ -269,26 +269,25 @@ cd apps/android
 ./gradlew :app:testThirdPartyDebugUnitTest
 ```
 
-### Deterministic Marketplace worker commands
+### Android photo and clipboard commands
 
-The third-party Android node exposes three commands for the Marketplace worker:
+The third-party Android node exposes three commands that any workflow can use:
 
 - `photos.stage` downloads a complete image batch directly into
   `Pictures/HT/<albumName>/`. It retries each failed download once, publishes
   the batch to Android MediaStore only under deterministic `openclaw-NN`
   filenames, and removes a partial batch if any image fails.
 - `photos.cleanup` removes only the `openclaw-*` files created for the named
-  album. Call it after the listing result has been saved.
-- `clipboard.read` returns the current text clipboard so a copied Facebook
-  listing URL can be read without opening Chrome. Bring OpenClaw to the
-  foreground after copying in Facebook; Android may return an empty clipboard
-  while Facebook has focus.
+  album. Call it after the workflow has finished using the photos.
+- `clipboard.read` returns the current text clipboard. Bring OpenClaw to the
+  foreground after copying in another app; Android may return an empty clipboard
+  while that app has focus.
 
 Example payloads:
 
 ```json
-{"command":"photos.stage","params":{"albumName":"HT-Listing-3","imageUrls":["https://example.com/1.jpg"]}}
-{"command":"photos.cleanup","params":{"albumName":"HT-Listing-3"}}
+{"command":"photos.stage","params":{"albumName":"job-123","imageUrls":["https://example.com/1.jpg"]}}
+{"command":"photos.cleanup","params":{"albumName":"job-123"}}
 {"command":"clipboard.read","params":{}}
 ```
 
