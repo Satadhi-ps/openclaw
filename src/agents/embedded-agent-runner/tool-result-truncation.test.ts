@@ -309,7 +309,7 @@ describe("perResultLimit", () => {
     [8_000, 9_600, 38_400],
     [20_000, 16_000, 64_000],
     [128_000, 32_000, 256_000],
-    [200_000, 64_000, 400_000],
+    [200_000, 128_000, 512_000],
   ])(
     "resolves aggregate live cap for %s token windows",
     (contextWindowTokens, perResultMaxChars, aggregateMaxChars) => {

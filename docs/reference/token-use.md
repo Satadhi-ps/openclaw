@@ -80,7 +80,7 @@ limits.
 
 OpenClaw derives the live tool-result cap from the effective model context
 window: `16000` chars below
-100K tokens, `32000` chars at 100K+ tokens, `64000` chars at 200K+ tokens.
+100K tokens, `32000` chars at 100K+ tokens, `128000` chars at 200K+ tokens.
 The runtime context-share guard also caps a single tool result at 30% of the
 context window.
 
